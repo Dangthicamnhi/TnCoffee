@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/ivAnh"
+        android:layout_width="103dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_nv1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        >
+
+        <TextView
+            android:id="@+id/tvMaNV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Mã"
+            android:textColor="#000"
+            android:textSize="21dp" />
+
+        <TextView
+            android:id="@+id/tvTenNV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Nhập Tên"
+            android:textColor="#000"
+            android:textSize="21dp" />
+
+        <TextView
+            android:id="@+id/tvSDTH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Nhập SDTH"
+            android:textColor="#000"
+            android:textSize="21dp" />
+
+        <TextView
+            android:id="@+id/tvCCCD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Nhập CCCD"
+            android:textColor="#000"
+            android:textSize="21dp" />
+    </LinearLayout>
+
+
+</LinearLayout>
