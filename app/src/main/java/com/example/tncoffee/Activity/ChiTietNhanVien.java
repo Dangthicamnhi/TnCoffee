@@ -187,7 +187,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
 //            public void onClick(View view) {
 //                onBackPressed();
 //            }
-        //});
+//        });
     }
     private boolean KiemTraTonTai(String ma) {
         for (int i = 0; i < danhSach.size(); i++) {
