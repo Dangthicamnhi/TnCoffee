@@ -182,6 +182,60 @@ public class ChiTietNhanVien extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (NhanVien item : QLNhanVien.danhSach) {
+                    if (item.getMaNV().equals(edtMaNV.getText().toString())) {
+                        QLNhanVien.danhSach.remove(item);
+                        break;
+                    }
+                }
+                QLNhanVien.adap.notifyDataSetChanged();
+                onBackPressed();
+                Toast.makeText(ChiTietNhanVien.this, "Xóa nhân viên thành công", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean Ktr = false; // Biến item để kiểm tra xem có sự thay đổi thông tin hay không
+                for (NhanVien item : QLNhanVien.danhSach) {
+                    if (item.getMaNV().equals(edtMaNV.getText().toString())) {
+                        String newMaNV = edtMaNV.getText().toString();
+                        String newTenNV = edtTenNV.getText().toString();
+                        String newSDT = edtSDTH.getText().toString();
+                        String newCCCD = edtCCCD.getText().toString();
+                        String newPhong = spNhanVien.getSelectedItem().toString();
+
+                        // Kiểm tra xem thông tin đã thay đổi hay chưa
+                        if (!item.getMaNV().equals(newMaNV) || !item.getTenNV().equals(newTenNV) || !item.getSDTH().equals(newSDT)
+                                || !item.getCCCD().equals(newCCCD) || !item.getPhong().equals(newPhong)) {
+                            item.setMaNV(newMaNV);
+                            item.setTenNV(newTenNV);
+                            item.setSDTH(newSDT);
+                            item.setCCCD(newCCCD);
+                            item.setPhong(newPhong);
+                            Ktr = true; // Đánh dấu là đã có sự thay đổi thông tin
+                            break;
+                        }
+                    }
+                }
+                if (Ktr) {
+                    QLNhanVien.adap.notifyDataSetChanged();
+                    Toast.makeText(ChiTietNhanVien.this, "Sửa nhân viên thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ChiTietNhanVien.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();
+                }
+
+                QLNhanVien.adap.notifyDataSetChanged();
+                onBackPressed();
+            }
+
+        });
 //        btnThoat.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
