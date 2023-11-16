@@ -18,7 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tncoffee.Moder.NhanVien;
+import com.example.tncoffee.Model.NhanVien;
 import com.example.tncoffee.R;
 
 import java.util.ArrayList;
