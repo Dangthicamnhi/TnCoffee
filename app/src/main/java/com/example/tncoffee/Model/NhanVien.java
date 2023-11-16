@@ -1,4 +1,4 @@
-package com.example.tncoffee.Moder;
+package com.example.tncoffee.Model;
 
 import java.io.Serializable;
 

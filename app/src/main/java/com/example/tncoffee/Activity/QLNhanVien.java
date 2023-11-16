@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.tncoffee.Adapter.Custom_Adapter;
-import com.example.tncoffee.Moder.NhanVien;
+import com.example.tncoffee.Model.NhanVien;
 import com.example.tncoffee.R;
 
 import java.util.ArrayList;
@@ -50,10 +50,10 @@ public class QLNhanVien extends AppCompatActivity {
     }
 
     private void setControl() {
-
+        KhoiTao();
         lvDanhSach = findViewById(R.id.lvDanhSach);
         btnChiTiet = findViewById(R.id.btnChiTietNhanVien);
-//        tvThongKe = findViewById(R.id.tvThongKe);
+        tvThongKe = findViewById(R.id.tvThongKe);
         btnThongKe = findViewById(R.id.btnThongKe);
     }
 
@@ -81,17 +81,17 @@ public class QLNhanVien extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        //Nút thống kê số lượng các loại sản phẩm
-//        btnThongKe.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                tvThongKe.setText(NhanVien.ThongKe());
-//            }
-//        });
+        //Nút thống kê số lượng Nhân viên
+        btnThongKe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvThongKe.setText(NhanVien.ThongKe());
+            }
+        });
     }
     private void KhoiTao() {
-//        danhSach.add(new NhanVien("001", "Văn A", "0123456789", "1234567890112","Phòng 1"));
-//        danhSach.add(new NhanVien("002", "Văn A" ,"0180954789", "1230946983412", "Phòng 2"));
-//        danhSach.add(new NhanVien("003", "Văn A" ,"0094576789", "1234567057579", "Phòng 3"));
+        danhSach.add(new NhanVien("ID001", "Nguyễn Tuấn", "0123456789", "123456789012", "Phòng 1"));
+        danhSach.add(new NhanVien("ID002", "Hoàng Văn A" ,"0180954789", "123094698342", "Phòng 2"));
+        danhSach.add(new NhanVien("ID003", "Nguyễn Thị C" ,"0094576789","1234567057579","Phòng 3"));
     }
 }

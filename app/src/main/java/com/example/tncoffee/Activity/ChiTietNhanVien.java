@@ -132,7 +132,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
             edtCCCD.setText(nv.getCCCD());
         }
 
-//         Log.d("lengthListNV", String.valueOf(lengthListNV));
+        // Log.d("lengthListNV", String.valueOf(lengthListNV));
 //        tvMaNV.setText(nv.getMaNV());
 
         btnLamMoi.setOnClickListener(new View.OnClickListener() {
@@ -243,7 +243,6 @@ public class ChiTietNhanVien extends AppCompatActivity {
 //            }
 //        });
     }
-
     private boolean KiemTraTonTai(String ma) {
         for (int i = 0; i < danhSach.size(); i++) {
             if (danhSach.get(i).getMaNV().equals(ma)) {
@@ -260,6 +259,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
         danhsachNhanVien.add("Phòng 3");
 
     }
+
 
 
 }

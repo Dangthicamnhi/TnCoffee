@@ -2,10 +2,8 @@ package com.example.tncoffee.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tncoffee.Moder.NhanVien;
+import com.example.tncoffee.Model.NhanVien;
 import com.example.tncoffee.R;
 
 import java.util.List;

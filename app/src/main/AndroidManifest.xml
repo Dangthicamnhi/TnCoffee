@@ -22,7 +22,7 @@
             android:name=".Activity.QLNhanVien"
             android:exported="false" />
         <activity
-            android:name=".Moder.NhanVien"
+            android:name=".Model.NhanVien"
             android:exported="false" />
         <activity
             android:name=".Adapter.Custom_Adapter"
