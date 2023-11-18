@@ -131,10 +131,6 @@ public class ChiTietNhanVien extends AppCompatActivity {
             edtSDTH.setText(nv.getSDTH());
             edtCCCD.setText(nv.getCCCD());
         }
-
-        // Log.d("lengthListNV", String.valueOf(lengthListNV));
-//        tvMaNV.setText(nv.getMaNV());
-
         btnLamMoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,7 +151,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
                 String sdtH = edtSDTH.getText().toString();
                 String cccd = edtCCCD.getText().toString();
                 String selectedItem = spNhanVien.getSelectedItem().toString();
-                Toast.makeText(ChiTietNhanVien.this, selectedItem, Toast.LENGTH_LONG).show();
+             //   Toast.makeText(ChiTietNhanVien.this, selectedItem, Toast.LENGTH_LONG).show();
                 // Kiểm tra thông tin bắt buộc đã được nhập
                 if (maNV.isEmpty() || tenNV.isEmpty() || sdtH.isEmpty() || cccd.isEmpty()) {
                     Toast.makeText(ChiTietNhanVien.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
@@ -173,7 +169,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
                     return;
                 }
 
-                QLNhanVien.danhSach.add(new NhanVien(maNV, tenNV, sdtH, cccd, selectedItem));
+               // QLNhanVien.danhSach.add(new NhanVien(maNV, tenNV, sdtH, cccd, selectedItem));
                 QLNhanVien.adap.notifyDataSetChanged();
 
                 onBackPressed();
@@ -188,6 +184,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
             public void onClick(View view) {
                 for (NhanVien item : QLNhanVien.danhSach) {
                     if (item.getMaNV().equals(edtMaNV.getText().toString())) {
+                        NhanVien.GiamSoLuong(item.getPhong());
                         QLNhanVien.danhSach.remove(item);
                         break;
                     }
@@ -236,30 +233,12 @@ public class ChiTietNhanVien extends AppCompatActivity {
             }
 
         });
-//        btnThoat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onBackPressed();
-//            }
-//        });
     }
-    private boolean KiemTraTonTai(String ma) {
-        for (int i = 0; i < danhSach.size(); i++) {
-            if (danhSach.get(i).getMaNV().equals(ma)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     private void KhoiTao() {
         danhsachNhanVien.add("Phòng 1");
         danhsachNhanVien.add("Phòng 2");
         danhsachNhanVien.add("Phòng 3");
 
     }
-
-
 
 }

@@ -50,7 +50,6 @@ public class QLNhanVien extends AppCompatActivity {
     }
 
     private void setControl() {
-        KhoiTao();
         lvDanhSach = findViewById(R.id.lvDanhSach);
         btnChiTiet = findViewById(R.id.btnChiTietNhanVien);
         tvThongKe = findViewById(R.id.tvThongKe);
@@ -88,10 +87,5 @@ public class QLNhanVien extends AppCompatActivity {
                 tvThongKe.setText(NhanVien.ThongKe());
             }
         });
-    }
-    private void KhoiTao() {
-        danhSach.add(new NhanVien("ID001", "Nguyễn Tuấn", "0123456789", "123456789012", "Phòng 1"));
-        danhSach.add(new NhanVien("ID002", "Hoàng Văn A" ,"0180954789", "123094698342", "Phòng 2"));
-        danhSach.add(new NhanVien("ID003", "Nguyễn Thị C" ,"0094576789","1234567057579","Phòng 3"));
     }
 }
