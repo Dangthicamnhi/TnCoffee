@@ -13,7 +13,13 @@
         android:theme="@style/Theme.TnCoffee"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.Menu"
+            android:name=".Activity.ChiTietMon"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.QLMon"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ChucNang"
             android:exported="false" />
         <activity
             android:name=".Activity.ChiTietNhanVien"

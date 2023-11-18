@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,Menu.class);
+                Intent i = new Intent(MainActivity.this, ChucNang.class);
                 startActivity(i);
             }
         });
