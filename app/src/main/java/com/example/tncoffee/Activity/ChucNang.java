@@ -10,9 +10,9 @@ import android.widget.Button;
 
 import com.example.tncoffee.R;
 
-public class Menu extends AppCompatActivity {
+public class ChucNang extends AppCompatActivity {
 
-    Button bntQLNhanViien , btnQLNuocUong ;
+    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,16 @@ public class Menu extends AppCompatActivity {
         bntQLNhanViien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Menu.this, QLNhanVien.class);
+                Intent intent=new Intent(ChucNang.this, QLNhanVien.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnQLMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChucNang.this, QLMon.class);
                 startActivity(intent);
             }
         });
@@ -36,6 +45,7 @@ public class Menu extends AppCompatActivity {
 
     private void setControls() {
         bntQLNhanViien = findViewById(R.id.btnQLNhanVien);
+        btnQLMenu = findViewById(R.id.btnQLMenu);
 
     }
 }
