@@ -26,18 +26,16 @@ import java.util.List;
 import java.util.UUID;
 
 public class ChiTietNhanVien extends AppCompatActivity {
-
     EditText edtTenNV, edtMaNV, edtSDTH, edtCCCD;
     TextView tvMaNV;
     Spinner spNhanVien;
     ImageView ivHinh;
-    Button btnThem, btnXoa, btnSua, btnThoat, btnLamMoi;
+    Button btnThem, btnXoa, btnSua, btnLamMoi;
     ListView lvView;
     List<String> danhsachNhanVien = new ArrayList<>();
     ArrayAdapter adapter_LSP;
     List<NhanVien> danhSach = new ArrayList<>();
-    int index = -1;
-
+    int index = -1 ;
     int lengthListNV = 0;
 
     @Override
@@ -126,11 +124,14 @@ public class ChiTietNhanVien extends AppCompatActivity {
             edtCCCD.setText(nv.getCCCD());
         } else {
             btnThem.setVisibility(View.INVISIBLE);
+            btnLamMoi.setVisibility(View.INVISIBLE);
             edtMaNV.setText("ID" + nv.getMaNV());
+            edtMaNV.setText(nv.getMaNV());
             edtTenNV.setText(nv.getTenNV());
             edtSDTH.setText(nv.getSDTH());
             edtCCCD.setText(nv.getCCCD());
         }
+
         btnLamMoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +152,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
                 String sdtH = edtSDTH.getText().toString();
                 String cccd = edtCCCD.getText().toString();
                 String selectedItem = spNhanVien.getSelectedItem().toString();
-             //   Toast.makeText(ChiTietNhanVien.this, selectedItem, Toast.LENGTH_LONG).show();
+//                Toast.makeText(ChiTietNhanVien.this, selectedItem, Toast.LENGTH_LONG).show();
                 // Kiểm tra thông tin bắt buộc đã được nhập
                 if (maNV.isEmpty() || tenNV.isEmpty() || sdtH.isEmpty() || cccd.isEmpty()) {
                     Toast.makeText(ChiTietNhanVien.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
@@ -169,7 +170,8 @@ public class ChiTietNhanVien extends AppCompatActivity {
                     return;
                 }
 
-               // QLNhanVien.danhSach.add(new NhanVien(maNV, tenNV, sdtH, cccd, selectedItem));
+                QLNhanVien.danhSach.add(new NhanVien(maNV, tenNV, sdtH, cccd, selectedItem));
+
                 QLNhanVien.adap.notifyDataSetChanged();
 
                 onBackPressed();
@@ -178,6 +180,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,50 +198,50 @@ public class ChiTietNhanVien extends AppCompatActivity {
             }
         });
 
-
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean Ktr = false; // Biến item để kiểm tra xem có sự thay đổi thông tin hay không
+                boolean hasChanges = false;
+
                 for (NhanVien item : QLNhanVien.danhSach) {
                     if (item.getMaNV().equals(edtMaNV.getText().toString())) {
-                        String newMaNV = edtMaNV.getText().toString();
-                        String newTenNV = edtTenNV.getText().toString();
-                        String newSDT = edtSDTH.getText().toString();
-                        String newCCCD = edtCCCD.getText().toString();
-                        String newPhong = spNhanVien.getSelectedItem().toString();
-
                         // Kiểm tra xem thông tin đã thay đổi hay chưa
-                        if (!item.getMaNV().equals(newMaNV) || !item.getTenNV().equals(newTenNV) || !item.getSDTH().equals(newSDT)
-                                || !item.getCCCD().equals(newCCCD) || !item.getPhong().equals(newPhong)) {
-                            item.setMaNV(newMaNV);
-                            item.setTenNV(newTenNV);
-                            item.setSDTH(newSDT);
-                            item.setCCCD(newCCCD);
-                            item.setPhong(newPhong);
-                            Ktr = true; // Đánh dấu là đã có sự thay đổi thông tin
-                            break;
+                        if (!item.getTenNV().equals(edtTenNV.getText().toString()) ||
+                                !item.getSDTH().equals(edtSDTH.getText().toString()) ||
+                                !item.getCCCD().equals(edtCCCD.getText().toString()) ||
+                                !item.getPhong().equals(spNhanVien.getSelectedItem().toString())) {
+                            item.setTenNV(edtTenNV.getText().toString());
+                            item.setSDTH(edtSDTH.getText().toString());
+                            item.setCCCD(edtCCCD.getText().toString());
+                            item.setPhong(spNhanVien.getSelectedItem().toString());
+                            hasChanges = true;
+                            break; // Dừng vòng lặp sau khi tìm thấy nhân viên
                         }
                     }
                 }
-                if (Ktr) {
+
+                if (hasChanges) {
                     QLNhanVien.adap.notifyDataSetChanged();
                     Toast.makeText(ChiTietNhanVien.this, "Sửa nhân viên thành công", Toast.LENGTH_SHORT).show();
+
+                    // Thống kê thay đổi
+                    //NhanVien.ThayDoiSoLuong(danhSach.get(index).getPhong(), spNhanVien.toString());
+
                 } else {
                     Toast.makeText(ChiTietNhanVien.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();
                 }
 
-                QLNhanVien.adap.notifyDataSetChanged();
                 onBackPressed();
             }
-
         });
+
     }
+
+
     private void KhoiTao() {
         danhsachNhanVien.add("Phòng 1");
         danhsachNhanVien.add("Phòng 2");
         danhsachNhanVien.add("Phòng 3");
 
     }
-
 }
