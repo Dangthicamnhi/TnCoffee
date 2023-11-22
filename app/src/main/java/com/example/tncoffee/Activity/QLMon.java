@@ -12,10 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.example.tncoffee.Adapter.Custom_Adapter;
 import com.example.tncoffee.Adapter.Custom_Adapter_SanPham;
-import com.example.tncoffee.Model.NhanVien;
 import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
 
@@ -33,7 +30,7 @@ public class QLMon extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_mon);
+        setContentView(R.layout.activity_qlmon);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Quản Lý Món");
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -53,10 +50,10 @@ public class QLMon extends AppCompatActivity {
     }
 
     private void setControl() {
-        lvDanhSach = findViewById(R.id.lvDanhSach);
+        lvDanhSach = findViewById(R.id.lvDanhSachMon);
         btnChiTiet = findViewById(R.id.btnChiTietMon);
-        tvThongKe = findViewById(R.id.tvThongKe);
-        btnThongKe = findViewById(R.id.btnThongKe);
+        tvThongKe = findViewById(R.id.tvThongKeMon);
+        btnThongKe = findViewById(R.id.btnThongKeMon);
     }
 
     private void setEvent() {

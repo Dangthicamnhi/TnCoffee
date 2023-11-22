@@ -42,7 +42,7 @@ public class ChiTietMon extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_nhan_vien);
+        setContentView(R.layout.activity_chi_tiet_mon);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Chi Tiết Món");
         // showing the back button in action bar
@@ -70,11 +70,11 @@ public class ChiTietMon extends AppCompatActivity {
         edtGia = findViewById(R.id.edtGiaMon);
         spMon = findViewById(R.id.spMon);
         ivHinh = findViewById(R.id.ivAnh);
-        btnThem = findViewById(R.id.btnThem);
-        btnXoa = findViewById(R.id.btnXoa);
-        btnSua = findViewById(R.id.btnSua);
-        btnLamMoi = findViewById(R.id.bntLamMoi);
-        lvView = findViewById(R.id.lvDanhSach);
+        btnThem = findViewById(R.id.btnThemMon);
+        btnXoa = findViewById(R.id.btnXoaMon);
+        btnSua = findViewById(R.id.btnSuaMon);
+        btnLamMoi = findViewById(R.id.bntLamMoiMon);
+        lvView = findViewById(R.id.lvDanhSachMon);
     }
 
     private void setEvents() {
@@ -182,14 +182,16 @@ public class ChiTietMon extends AppCompatActivity {
                 for (SanPham item : QLMon.danhSach) {
                     if (item.getMa().equals(edtMaMon.getText().toString())) {
                         // Kiểm tra xem thông tin đã thay đổi hay chưa
-                        if (!item.getTen().equals(edtTenMon.getText().toString()) ||
-                                !item.getGia().equals(edtGia.getText().toString()) ||
-                                !item.getLoai().equals(spMon.getSelectedItem().toString())) {
-                            item.setTen(edtTenMon.getText().toString());
-                            item.setGia(edtGia.getText().toString());
-                            item.setLoai(spMon.getSelectedItem().toString());
+                        String newTen = edtTenMon.getText().toString();
+                        String newGia = edtGia.getText().toString();
+                        String newLoai = spMon.getSelectedItem().toString();
+
+                        if (!item.getTen().equals(newTen) || !item.getGia().equals(newGia) || !item.getLoai().equals(newLoai)) {
+                            item.setTen(newTen);
+                            item.setGia(newGia);
+                            item.setLoai(newLoai);
                             hasChanges = true;
-                            break; // Dừng vòng lặp sau khi tìm thấy nhân viên
+                            break;
                         }
                     }
                 }
@@ -197,8 +199,6 @@ public class ChiTietMon extends AppCompatActivity {
                 if (hasChanges) {
                     QLMon.adap.notifyDataSetChanged();
                     Toast.makeText(ChiTietMon.this, "Sửa nhân viên thành công", Toast.LENGTH_SHORT).show();
-
-
                 } else {
                     Toast.makeText(ChiTietMon.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();
                 }
@@ -206,6 +206,39 @@ public class ChiTietMon extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+//        btnSua.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean hasChanges = false;
+//
+//                for (SanPham item : QLMon.danhSach) {
+//                    if (item.getMa().equals(edtMaMon.getText().toString())) {
+//                        // Kiểm tra xem thông tin đã thay đổi hay chưa
+//                        if (!item.getTen().equals(edtTenMon.getText().toString()) ||
+//                                !item.getGia().equals(edtGia.getText().toString()) ||
+//                                !item.getLoai().equals(spMon.getSelectedItem().toString())) {
+//                            item.setTen(edtTenMon.getText().toString());
+//                            item.setGia(edtGia.getText().toString());
+//                            item.setLoai(spMon.getSelectedItem().toString());
+//                            hasChanges = true;
+//                            break; // Dừng vòng lặp sau khi tìm thấy nhân viên
+//                        }
+//                    }
+//                }
+//
+//                if (hasChanges) {
+//                    QLMon.adap.notifyDataSetChanged();
+//                    Toast.makeText(ChiTietMon.this, "Sửa nhân viên thành công", Toast.LENGTH_SHORT).show();
+//
+//
+//                } else {
+//                    Toast.makeText(ChiTietMon.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                onBackPressed();
+//            }
+//        });
 
     }
 

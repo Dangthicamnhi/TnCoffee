@@ -7,7 +7,7 @@
     android:background="#f2f2f2"
     android:orientation="vertical"
     android:padding="10sp"
-    tools:context=".Activity.QLMon">
+    tools:context=".Activity.ChiTietMon">
 
     <EditText
         android:id="@+id/edtMaMon"
@@ -18,7 +18,7 @@
         android:enabled="false"
         android:hint="Nhập mã món"
         android:textColor="#000"
-        android:textSize="18dp" />
+        android:textSize="21dp" />
 
     <EditText
         android:id="@+id/edtTenMon"
@@ -28,7 +28,7 @@
         android:background="@drawable/ic_border"
         android:hint="Nhập tên món"
         android:textColor="#000"
-        android:textSize="18dp" />
+        android:textSize="21dp" />
 
     <EditText
         android:id="@+id/edtGiaMon"
@@ -39,7 +39,7 @@
         android:hint="Giá Món"
         android:inputType="number"
         android:textColor="#000"
-        android:textSize="18dp" />
+        android:textSize="21dp" />
 
 
     <LinearLayout
@@ -49,7 +49,7 @@
         <Spinner
             android:id="@+id/spMon"
             android:layout_width="wrap_content"
-            android:layout_height="45sp"
+            android:layout_height="50sp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@drawable/ic_border" />
@@ -74,7 +74,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnThem"
+                android:id="@+id/btnThemMon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,7 +83,7 @@
                 android:text="Thêm" />
 
             <Button
-                android:id="@+id/btnXoa"
+                android:id="@+id/btnXoaMon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -100,7 +100,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnSua"
+                android:id="@+id/btnSuaMon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -109,7 +109,7 @@
                 android:text="Sửa" />
 
             <Button
-                android:id="@+id/bntLamMoi"
+                android:id="@+id/bntLamMoiMon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
