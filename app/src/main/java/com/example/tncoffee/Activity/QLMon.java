@@ -65,7 +65,7 @@ public class QLMon extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(QLMon.this, ChiTietMon.class);
                 intent.putExtra("item" ,danhSach.get(i));
-                intent.putExtra("lengthListMon" , danhSach.size());
+                intent.putExtra("lengthListSanPham" , danhSach.size());
                 intent.putExtra("isCreateNew" , false);
                 startActivity(intent);
             }
@@ -75,7 +75,7 @@ public class QLMon extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(QLMon.this, ChiTietMon.class);
                 intent.putExtra("item" ,new SanPham("", "", "" , "" ));
-                intent.putExtra("lengthListMon" , danhSach.size());
+                intent.putExtra("lengthListSanPham" , danhSach.size());
                 intent.putExtra("isCreateNew" , true);
                 startActivity(intent);
             }
