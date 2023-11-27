@@ -3,44 +3,44 @@ package com.example.tncoffee.Model;
 import java.io.Serializable;
 
 public class SanPham implements Serializable {
-    private String ma, ten, gia, loai;
-    private static int sLDoAn = 0, sLNuocUong = 0;
+    private String ma, ten, gia, Loai;
+    private static int DoAn = 0, NuocUong = 0;
 
     public SanPham(String ma, String ten, String gia, String loai) {
         this.ma = ma;
         this.ten = ten;
         this.gia = gia;
-        this.loai = loai;
+       Loai = loai;
         if (loai.equals("Đồ ăn")){
-            sLDoAn++;
+            DoAn++;
         }else if (loai.equals("Nước uống")){
-            sLNuocUong++;
+            NuocUong++;
         }
     }
 
     public static String ThongKe(){
-        return "Số lượng đồ ăn: " + sLDoAn +
-                "\nSố lượng nước uống: " + sLNuocUong ;
+        return "Số lượng đồ ăn: " + DoAn +
+                "\nSố lượng nước uống: " + NuocUong ;
     }
 
     public static void GiamSoLuong(String loai) {
         if (loai.equals("Đồ ăn")){
-            sLDoAn--;
+            DoAn--;
         }else if (loai.equals("Nước uống")){
-            sLNuocUong--;
+            NuocUong--;
         }
     }
 
     public static void ThayDoiSoLuong(String loaiGiam, String loaiTang) {
         if (loaiGiam.equals("Đồ ăn")){
-            sLDoAn--;
+            DoAn--;
         }else if (loaiGiam.equals("Nước uống")){
-            sLNuocUong--;
+            NuocUong--;
         }
         if (loaiTang.equals("Đồ ăn")){
-            sLDoAn++;
+            DoAn++;
         }else if (loaiTang.equals("Nước uống")){
-            sLNuocUong++;
+            NuocUong++;
         }
     }
 
@@ -69,16 +69,16 @@ public class SanPham implements Serializable {
     }
 
     public String getLoai() {
-        return loai;
+        return Loai;
     }
 
     public void setLoai(String loai) {
-        this.loai = loai;
+        Loai = loai;
     }
 
     @Override
     public String toString() {
-        return "Thông Tin:\nMã: " + ma + ", Tên: " + ten + "\nLoại: " + loai + ", Giá: " + gia + "}";
+        return "Thông Tin:\nMã: " + ma + ", Tên: " + ten + "\nLoại: " + Loai + ", Giá: " + gia + "}";
     }
 
 

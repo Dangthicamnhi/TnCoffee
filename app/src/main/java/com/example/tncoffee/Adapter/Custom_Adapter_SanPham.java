@@ -42,7 +42,7 @@ public class Custom_Adapter_SanPham extends ArrayAdapter {
         tvTenMon.setText(nv.getTen());
         tvGia.setText(nv.getGia());
         if (nv.getLoai().equals("Đồ Ăn")){
-            ivHinh.setImageResource(R.drawable.ic_doan);
+            ivHinh.setImageResource(R.drawable.ic_bxiu);
         }if (nv.getLoai().equals("Nước Uống")){
             ivHinh.setImageResource(R.drawable.ic_nuocuong);
         }

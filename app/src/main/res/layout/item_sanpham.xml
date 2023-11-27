@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/ivAnh"
-        android:layout_width="391dp"
-        android:layout_height="133dp"
+        android:layout_width="256dp"
+        android:layout_height="135dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_doan" />
+        android:src="@drawable/ic_bxiu" />
 
     <LinearLayout
         android:layout_width="match_parent"
