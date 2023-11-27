@@ -12,7 +12,7 @@ import com.example.tncoffee.R;
 
 public class ChucNang extends AppCompatActivity {
 
-    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon ;
+    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon , btnLogOut ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +48,48 @@ public class ChucNang extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChucNang.this, Order.class);
+                startActivity(intent);
+            }
+        });
+
+//        btnTTCuaHang.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(ChucNang.this, .class);
+//                startActivity(intent);
+//            }
+//        });
+        btnHoaDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChucNang.this, Payment.class);
+                startActivity(intent);
+            }
+        });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChucNang.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void setControls() {
         bntQLNhanViien = findViewById(R.id.btnQLNhanVien);
         btnQLMenu = findViewById(R.id.btnQLMenu);
         btnQLKho = findViewById(R.id.btnQLKho);
+        btnOrder = findViewById(R.id.btnOrder);
+        btnHoaDon = findViewById(R.id.btnHoaDon);
+        btnTTCuaHang = findViewById(R.id.btnTTCuaHang);
+        btnLogOut = findViewById(R.id.btnLogOut);
 
     }
 }
