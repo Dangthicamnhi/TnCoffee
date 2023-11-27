@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TnCoffee"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Payment"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Order"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ChiTietKho"
             android:exported="false" />
         <activity
