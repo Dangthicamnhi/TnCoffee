@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical"
+    android:padding="20px"
+    tools:context=".Activity.QLKho">
+
+    <ListView
+        android:id="@+id/lvDanhSach"
+        android:layout_width="match_parent"
+        android:layout_height="469dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnThongKe"
+            android:layout_width="0dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#EFA289"
+            android:text="Thống kê" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btnChiTietKho"
+            android:layout_width="0dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#EFA289"
+            android:text="Thêm Hàng Hóa" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        android:layout_weight="1"
+        android:id="@+id/tvThongKe"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#549CD6"
+        android:textStyle="italic"
+        android:typeface="sans"
+        />
+
+
+</LinearLayout>
