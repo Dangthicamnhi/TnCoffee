@@ -41,11 +41,19 @@ public class ChucNang extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnQLKho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChucNang.this, QLKho.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setControls() {
         bntQLNhanViien = findViewById(R.id.btnQLNhanVien);
         btnQLMenu = findViewById(R.id.btnQLMenu);
+        btnQLKho = findViewById(R.id.btnQLKho);
 
     }
 }
