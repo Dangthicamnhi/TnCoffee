@@ -57,13 +57,13 @@ public class ChucNang extends AppCompatActivity {
             }
         });
 
-//        btnTTCuaHang.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(ChucNang.this, .class);
-//                startActivity(intent);
-//            }
-//        });
+        btnTTCuaHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChucNang.this, TTCuaHang.class);
+                startActivity(intent);
+            }
+        });
         btnHoaDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
