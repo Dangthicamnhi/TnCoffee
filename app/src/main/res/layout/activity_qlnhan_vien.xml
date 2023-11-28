@@ -28,6 +28,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="#EFA289"
+            android:drawableLeft="@drawable/ic_feed"
             android:text="Thống kê" />
 
         <Space
@@ -41,6 +42,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="#EFA289"
+            android:drawableLeft="@drawable/ic_add"
             android:text="Thêm Nhân Viên" />
 
     </LinearLayout>
