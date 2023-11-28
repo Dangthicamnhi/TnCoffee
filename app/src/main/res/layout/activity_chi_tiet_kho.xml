@@ -9,6 +9,12 @@
     android:padding="10sp"
     tools:context=".Activity.ChiTietKho">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_logo" />
+
     <EditText
         android:id="@+id/edtMaHH"
         android:layout_width="match_parent"
@@ -89,17 +95,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:drawableLeft="@drawable/ic_add"
                 android:backgroundTint="#EFA289"
                 android:text="Thêm" />
 
             <Button
                 android:id="@+id/btnXoa"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25sp"
                 android:layout_marginBottom="25sp"
                 android:backgroundTint="#EFA289"
+                android:drawableLeft="@drawable/ic_delete"
                 android:text="Xóa" />
         </LinearLayout>
 
@@ -111,21 +119,23 @@
 
             <Button
                 android:id="@+id/btnSua"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:backgroundTint="#EFA289"
+                android:drawableLeft="@drawable/ic_edit"
                 android:text="Sửa" />
 
             <Button
                 android:id="@+id/bntLamMoi"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25sp"
                 android:backgroundTint="#EFA289"
                 android:gravity="center"
+                android:drawableLeft="@drawable/ic_update"
                 android:text="Làm Mới" />
 
 
