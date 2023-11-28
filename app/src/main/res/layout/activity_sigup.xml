@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#52EDE3B2"
+    tools:context=".Activity.Sigup">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/ic_logo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
+        android:text="Sigup"
+        android:textSize="50dp" />
+
+    <EditText
+        android:id="@+id/edtuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/edtpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password" />
+
+    <EditText
+        android:id="@+id/edthoten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name" />
+
+    <EditText
+        android:id="@+id/edtngaysinh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date of Birth" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/rdnam"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:text="Nam" />
+
+        <RadioButton
+            android:id="@+id/rdnu"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:text="Nữ" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="383dp"
+        android:layout_height="169dp"
+        android:padding="30dp">
+
+        <Button
+            android:id="@+id/btnDangKi"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:backgroundTint="#ADEAB28D"
+            android:text="Sign Up" />
+
+        <Button
+            android:id="@+id/btnQuayLai"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ADEAB28D"
+            android:text="Back" />
+    </LinearLayout>
+
+
+</LinearLayout>
