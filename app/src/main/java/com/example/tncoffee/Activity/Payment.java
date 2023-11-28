@@ -1,5 +1,6 @@
 package com.example.tncoffee.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,6 +14,9 @@ public class Payment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Hóa Đơn");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
             // Ánh xạ các thành phần trong giao diện XML
             tvQuantity = findViewById(R.id.tvQuantity);
