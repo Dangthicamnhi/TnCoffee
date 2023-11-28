@@ -10,6 +10,12 @@
     tools:context=".Activity.Payment">
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_logo" />
+
     <TextView
         android:id="@+id/tvSelectedMon"
         android:layout_width="match_parent"
@@ -41,6 +47,23 @@
         android:textColor="#000"
         android:hint="Size: "
         android:textSize="21dp" />
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="59dp"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnThanhToan"
+            android:layout_width="183dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#EFA289"
+            android:drawableLeft="@drawable/ic_payment"
+            android:text="Thanh toán" />
+    </LinearLayout>
 
 
 

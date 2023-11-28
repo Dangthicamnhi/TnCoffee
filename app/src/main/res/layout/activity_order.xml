@@ -12,7 +12,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="87dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_logo" />
 
@@ -102,6 +102,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:backgroundTint="#EFA289"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_shopping"
         android:text="Đặt hàng" />
 
 
