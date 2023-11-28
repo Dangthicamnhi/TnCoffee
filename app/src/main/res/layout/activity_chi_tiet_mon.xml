@@ -9,6 +9,12 @@
     android:padding="10sp"
     tools:context=".Activity.ChiTietMon">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_logo" />
+
     <EditText
         android:id="@+id/edtMaMon"
         android:layout_width="match_parent"
@@ -80,16 +86,18 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:backgroundTint="#EFA289"
+                android:drawableLeft="@drawable/ic_add"
                 android:text="Thêm" />
 
             <Button
                 android:id="@+id/btnXoaMon"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25sp"
                 android:layout_marginBottom="25sp"
                 android:backgroundTint="#EFA289"
+                android:drawableLeft="@drawable/ic_delete"
                 android:text="Xóa" />
         </LinearLayout>
 
@@ -101,21 +109,23 @@
 
             <Button
                 android:id="@+id/btnSuaMon"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:backgroundTint="#EFA289"
+                android:drawableLeft="@drawable/ic_edit"
                 android:text="Sửa" />
 
             <Button
                 android:id="@+id/bntLamMoiMon"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25sp"
                 android:backgroundTint="#EFA289"
                 android:gravity="center"
+                android:drawableLeft="@drawable/ic_update"
                 android:text="Làm Mới" />
 
 

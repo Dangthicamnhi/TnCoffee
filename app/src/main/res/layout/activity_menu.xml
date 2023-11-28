@@ -9,10 +9,16 @@
     android:layout_gravity="center"
     tools:context=".Activity.ChucNang">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_logo" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
         <!-- Cột thứ nhất -->
         <LinearLayout
@@ -105,7 +111,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:layout_marginTop="50dp"
         android:background="#FFEFD5"
         android:gravity="center"
         android:orientation="horizontal">
