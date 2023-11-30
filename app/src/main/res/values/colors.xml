@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bgapp">#F5F2E3</color>
+    <color name="bgitemorder">#FA9487</color>
+
 </resources>
