@@ -177,7 +177,7 @@ public class ChiTietKho extends AppCompatActivity {
             public void onClick(View view) {
                 for (HangHoa item : QLKho.danhSach) {
                     if (item.getMaHH().equals(edtMaHH.getText().toString())) {
-                        HangHoa.GiamSoLuong(item.getLoai());
+//                        HangHoa.GiamSoLuong(item.getLoai());
                         QLKho.danhSach.remove(item);
                         break;
                     }
@@ -213,17 +213,6 @@ public class ChiTietKho extends AppCompatActivity {
                 if (hasChanges) {
                     QLKho.adap.notifyDataSetChanged();
                     Toast.makeText(ChiTietKho.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
-
-                    // Thống kê thay đổi
-                    String loaiGiam = "";  // Loại hàng hóa trước khi sửa
-                    String loaiTang = spHangHoa.getSelectedItem().toString();  // Loại hàng hóa sau khi sửa
-                    for (HangHoa item : QLKho.danhSach) {
-                        if (item.getMaHH().equals(edtMaHH.getText().toString())) {
-                            loaiGiam = item.getLoai();
-                            break;
-                        }
-                    }
-                    HangHoa.ThayDoiSoLuong(loaiGiam, loaiTang);
 
                 } else {
                     Toast.makeText(ChiTietKho.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();

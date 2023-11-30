@@ -1,48 +1,34 @@
 package com.example.tncoffee.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class SanPham implements Serializable {
     private String ma, ten, gia, Loai;
-    private static int DoAn = 0, NuocUong = 0;
-
     public SanPham(String ma, String ten, String gia, String loai) {
         this.ma = ma;
         this.ten = ten;
         this.gia = gia;
        Loai = loai;
-        if (loai.equals("Đồ ăn")){
-            DoAn++;
-        }else if (loai.equals("Nước uống")){
-            NuocUong++;
-        }
     }
 
-    public static String ThongKe(){
+    public static String ThongKe(List<SanPham> lsp){
+        int DoAn = 0, NuocUong = 0;
+        for (SanPham sp : lsp) {
+            switch (sp.getLoai()) {
+                case "Đồ Ăn":
+                    DoAn++;
+                    break;
+                case "Nước Uống":
+                    NuocUong++;
+                    break;
+            }
+        }
+
         return "Số lượng đồ ăn: " + DoAn +
                 "\nSố lượng nước uống: " + NuocUong ;
     }
 
-    public static void GiamSoLuong(String loai) {
-        if (loai.equals("Đồ ăn")){
-            DoAn--;
-        }else if (loai.equals("Nước uống")){
-            NuocUong--;
-        }
-    }
-
-    public static void ThayDoiSoLuong(String loaiGiam, String loaiTang) {
-        if (loaiGiam.equals("Đồ ăn")){
-            DoAn--;
-        }else if (loaiGiam.equals("Nước uống")){
-            NuocUong--;
-        }
-        if (loaiTang.equals("Đồ ăn")){
-            DoAn++;
-        }else if (loaiTang.equals("Nước uống")){
-            NuocUong++;
-        }
-    }
 
     public String getMa() {
         return ma;
