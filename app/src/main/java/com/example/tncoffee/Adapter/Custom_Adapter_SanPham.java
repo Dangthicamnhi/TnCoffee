@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.tncoffee.Model.NhanVien;
 import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
 
@@ -33,7 +32,7 @@ public class Custom_Adapter_SanPham extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
-        ImageView ivHinh = convertView.findViewById(R.id.ivAnh);
+        ImageView ivHinh = convertView.findViewById(R.id.ivHinhSanPham);
         TextView tvMaMon = convertView.findViewById(R.id.tvMaMon);
         TextView tvTenMon = convertView.findViewById(R.id.tvTenMon);
         TextView tvGia= convertView.findViewById(R.id.tvGiaMon);

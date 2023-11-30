@@ -18,8 +18,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tncoffee.Model.HangHoa;
-import com.example.tncoffee.Model.NhanVien;
 import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
 
@@ -69,7 +67,7 @@ public class ChiTietMon extends AppCompatActivity {
         edtTenMon = findViewById(R.id.edtTenMon);
         edtGia = findViewById(R.id.edtGiaMon);
         spMon = findViewById(R.id.spMon);
-        ivHinh = findViewById(R.id.ivAnh);
+        ivHinh = findViewById(R.id.ivHinhSanPham);
         btnThem = findViewById(R.id.btnThemMon);
         btnXoa = findViewById(R.id.btnXoaMon);
         btnSua = findViewById(R.id.btnSuaMon);
