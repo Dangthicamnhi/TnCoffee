@@ -6,7 +6,7 @@
     android:background="#fff">
 
     <ImageView
-        android:id="@+id/ivAnh"
+        android:id="@+id/ivHinhSanPham"
         android:layout_width="103dp"
         android:layout_height="match_parent"
         android:src="@drawable/ic_nv1" />

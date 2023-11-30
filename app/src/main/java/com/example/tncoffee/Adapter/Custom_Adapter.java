@@ -33,7 +33,7 @@ public class Custom_Adapter extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
-        ImageView ivHinh = convertView.findViewById(R.id.ivAnh);
+        ImageView ivHinh = convertView.findViewById(R.id.ivHinhSanPham);
         TextView tvMaNV = convertView.findViewById(R.id.tvMaNV);
         TextView tvTenNV = convertView.findViewById(R.id.tvTenNV);
         TextView tvSDTH = convertView.findViewById(R.id.tvSDTH);

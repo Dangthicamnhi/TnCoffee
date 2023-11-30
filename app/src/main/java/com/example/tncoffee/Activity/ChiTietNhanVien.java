@@ -69,7 +69,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
         edtSDTH = findViewById(R.id.edtSDTH);
         edtCCCD = findViewById(R.id.edtCCCD);
         spNhanVien = findViewById(R.id.spNhanVien);
-        ivHinh = findViewById(R.id.ivAnh);
+        ivHinh = findViewById(R.id.ivHinhSanPham);
         btnThem = findViewById(R.id.btnThem);
         btnXoa = findViewById(R.id.btnXoa);
         btnSua = findViewById(R.id.btnSua);
