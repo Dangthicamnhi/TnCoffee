@@ -163,7 +163,6 @@ public class ChiTietMon extends AppCompatActivity {
             public void onClick(View view) {
                 for (SanPham item : QLMon.danhSach) {
                     if (item.getMa().equals(edtMaMon.getText().toString())) {
-                        SanPham.GiamSoLuong(item.getLoai());
                         QLMon.danhSach.remove(item);
                         break;
                     }

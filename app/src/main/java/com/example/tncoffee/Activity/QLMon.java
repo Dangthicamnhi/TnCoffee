@@ -84,7 +84,7 @@ public class QLMon extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvThongKe.setText(SanPham.ThongKe());
+                tvThongKe.setText(SanPham.ThongKe(danhSach));
             }
         });
     }
