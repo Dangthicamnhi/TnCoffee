@@ -84,7 +84,7 @@ public class QLNhanVien extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvThongKe.setText(NhanVien.ThongKe());
+                tvThongKe.setText(NhanVien.ThongKe(danhSach));
             }
         });
     }

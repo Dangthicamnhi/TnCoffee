@@ -35,7 +35,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
     List<String> danhsachNhanVien = new ArrayList<>();
     ArrayAdapter adapter_LSP;
     List<NhanVien> danhSach = new ArrayList<>();
-    int index = -1 ;
+    int index = -1;
     int lengthListNV = 0;
 
     @Override
@@ -187,7 +187,7 @@ public class ChiTietNhanVien extends AppCompatActivity {
             public void onClick(View view) {
                 for (NhanVien item : QLNhanVien.danhSach) {
                     if (item.getMaNV().equals(edtMaNV.getText().toString())) {
-                        NhanVien.GiamSoLuong(item.getPhong());
+//                        NhanVien.GiamSoLuong(item.getPhong());
                         QLNhanVien.danhSach.remove(item);
                         break;
                     }
@@ -206,22 +206,17 @@ public class ChiTietNhanVien extends AppCompatActivity {
                 for (NhanVien item : QLNhanVien.danhSach) {
                     if (item.getMaNV().equals(edtMaNV.getText().toString())) {
                         // Kiểm tra xem thông tin đã thay đổi hay chưa
-                        if (!item.getTenNV().equals(edtTenNV.getText().toString()) ||
-                                !item.getSDTH().equals(edtSDTH.getText().toString()) ||
-                                !item.getCCCD().equals(edtCCCD.getText().toString()) ||
-                                !item.getPhong().equals(spNhanVien.getSelectedItem().toString())) {
-                            item.setTenNV(edtTenNV.getText().toString());
-                            item.setSDTH(edtSDTH.getText().toString());
-                            item.setCCCD(edtCCCD.getText().toString());
-                            item.setPhong(spNhanVien.getSelectedItem().toString());
-                            hasChanges = true;
-                            break; // Dừng vòng lặp sau khi tìm thấy nhân viên
-                        }
+                        item.setTenNV(edtTenNV.getText().toString());
+                        item.setSDTH(edtSDTH.getText().toString());
+                        item.setCCCD(edtCCCD.getText().toString());
+                        item.setPhong(spNhanVien.getSelectedItem().toString());
+                        hasChanges = true;
+                        break; // Dừng vòng lặp sau khi tìm thấy nhân viên
                     }
                 }
 
+                QLNhanVien.adap.notifyDataSetChanged();
                 if (hasChanges) {
-                    QLNhanVien.adap.notifyDataSetChanged();
                     Toast.makeText(ChiTietNhanVien.this, "Sửa nhân viên thành công", Toast.LENGTH_SHORT).show();
 
                     // Thống kê thay đổi
