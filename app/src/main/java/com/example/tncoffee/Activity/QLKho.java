@@ -85,7 +85,7 @@ public class QLKho extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvThongKeKho.setText(HangHoa.ThongKe());
+                tvThongKeKho.setText(HangHoa.ThongKe(danhSach));
             }
         });
     }
