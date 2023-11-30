@@ -19,17 +19,21 @@ public class TTCuaHang extends AppCompatActivity {
         actionBar.setTitle("Thông Tin Cửa Hàng");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        if (btnExit != null) {
-            btnExit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(TTCuaHang.this, ChucNang.class);
-                    startActivity(intent);
-                    onBackPressed();
-                }
-            });
-        }
+        setControls();
+        setEvents();
+    }
 
+    private void setEvents() {
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TTCuaHang.this, ChucNang.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setControls() {
         btnExit = findViewById(R.id.btnExit);
     }
 }
