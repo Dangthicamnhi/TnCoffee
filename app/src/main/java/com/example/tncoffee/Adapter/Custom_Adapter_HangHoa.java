@@ -12,10 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.tncoffee.Model.HangHoa;
-import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Custom_Adapter_HangHoa extends ArrayAdapter {
@@ -34,7 +32,7 @@ public class Custom_Adapter_HangHoa extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
-        ImageView ivHinh = convertView.findViewById(R.id.ivAnh);
+        ImageView ivHinh = convertView.findViewById(R.id.ivHinhSanPham);
         TextView tvMa = convertView.findViewById(R.id.tvMaHH);
         TextView tvTen = convertView.findViewById(R.id.tvTenHH);
         TextView tvSL = convertView.findViewById(R.id.tvSoLuong);
