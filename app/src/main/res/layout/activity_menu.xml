@@ -4,126 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F2E3"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    tools:context=".Activity.ChucNang">
-
+    android:background="#F5F2E2"
+    tools:context=".Activity.Menu">
     <ImageView
         android:layout_width="match_parent"
+        android:layout_marginTop="-20sp"
         android:layout_height="150dp"
-        android:layout_marginBottom="20dp"
         android:src="@drawable/ic_logo" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal">
-        <!-- Cột thứ nhất -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFEFD5"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnQLNhanVien"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="#FFFBC5B3"
-                android:drawableLeft="@drawable/ic_nhanvien"
-                android:text="QL Nhân Viên"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/btnQLKho"
-                android:layout_width="156dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="#FFFBC5B3"
-                android:drawableLeft="@drawable/ic_store"
-                android:text="QL Kho"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/btnQLMenu"
-                android:layout_width="156dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="#FFFBC5B3"
-                android:drawableLeft="@drawable/ic_qlmenu"
-                android:text="QL Menu"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <!-- Cột thứ hai -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFEFD5"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnOrder"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="#FBC5B3"
-                android:drawableLeft="@drawable/ic_order"
-                android:text="Order"
-                android:textColor="@color/black" />
-
-
-            <Button
-                android:id="@+id/btnHoaDon"
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="#FFFBC5B3"
-                android:drawableLeft="@drawable/ic_bill"
-                android:text="Hóa Đơn"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/btnTTCuaHang"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:backgroundTint="#FFFBC5B3"
-                android:drawableLeft="@drawable/ic_infor"
-                android:text="TT Cửa Hàng"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
+        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/lvDanhSachMon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:background="#FFEFD5"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/btnLogOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFBC5B3"
-            android:drawableLeft="@drawable/ic_logout"
-            android:text="LogOut"
-            android:textColor="@color/black" />
-    </LinearLayout>
-
 </LinearLayout>
