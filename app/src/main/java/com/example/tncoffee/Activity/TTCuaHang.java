@@ -1,10 +1,12 @@
 package com.example.tncoffee.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import com.example.tncoffee.R;
@@ -35,5 +37,11 @@ public class TTCuaHang extends AppCompatActivity {
 
     private void setControls() {
         btnExit = findViewById(R.id.btnExit);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 }
