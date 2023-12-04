@@ -26,20 +26,35 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvTenSanPham"
+                android:id="@+id/tvTenOrder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Bạc Xỉu"
+                android:text="Tên Món "
+                android:layout_gravity="center"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/ivTangSLSanPham"
-                android:layout_width="32dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end"
-                android:src="@drawable/ic_add" />
+<!--            <ImageView-->
+<!--                android:id="@+id/ivTangSLSanPham"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:src="@drawable/ic_add" />-->
 
+            <TextView
+                android:id="@+id/tvSoLuong"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="x1" />
+
+            <TextView
+                android:id="@+id/tvThanhTien"
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="60000 VNĐ" />
 
         </LinearLayout>
     </LinearLayout>
