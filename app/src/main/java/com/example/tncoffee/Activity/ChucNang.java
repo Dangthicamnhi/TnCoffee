@@ -12,12 +12,12 @@ import com.example.tncoffee.R;
 
 public class ChucNang extends AppCompatActivity {
 
-    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon , btnLogOut ;
+    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon , btnLogOut, btnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_chucnang);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Trang Chủ");
         setControls();
@@ -52,7 +52,7 @@ public class ChucNang extends AppCompatActivity {
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ChucNang.this, Order.class);
+                Intent intent=new Intent(ChucNang.this, OrderMon.class);
                 startActivity(intent);
             }
         });
@@ -68,6 +68,14 @@ public class ChucNang extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ChucNang.this, Payment.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ChucNang.this, Menu.class);
                 startActivity(intent);
             }
         });
@@ -90,6 +98,6 @@ public class ChucNang extends AppCompatActivity {
         btnHoaDon = findViewById(R.id.btnHoaDon);
         btnTTCuaHang = findViewById(R.id.btnTTCuaHang);
         btnLogOut = findViewById(R.id.btnLogOut);
-
+        btnMenu = findViewById(R.id.btnMenu);
     }
 }
