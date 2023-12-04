@@ -20,12 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QLMon extends AppCompatActivity {
-
     ListView lvDanhSach;
     TextView tvThongKe;
     Button btnChiTiet , btnThongKe;
-    static List<SanPham> danhSach = new ArrayList<>();
-    static Custom_Adapter_SanPham adap;
+    public static List<SanPham> danhSach = new ArrayList<>();
+    public static Custom_Adapter_SanPham adap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +59,27 @@ public class QLMon extends AppCompatActivity {
         adap = new Custom_Adapter_SanPham(this, R.layout.item_sanpham, danhSach);
         lvDanhSach.setAdapter(adap);
 
+        //Chọn sản phẩm trên danh sách để xem chi tiết
         lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(QLMon.this, ChiTietMon.class);
                 intent.putExtra("item" ,danhSach.get(i));
-                intent.putExtra("lengthListSanPham" , danhSach.size());
                 intent.putExtra("isCreateNew" , false);
                 startActivity(intent);
             }
         });
+
+        //Nút Thêm sản phẩm mới
         btnChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(QLMon.this, ChiTietMon.class);
-                intent.putExtra("item" ,new SanPham("", "", "" , "" ));
-                intent.putExtra("lengthListSanPham" , danhSach.size());
                 intent.putExtra("isCreateNew" , true);
                 startActivity(intent);
             }
         });
+
         //Nút thống kê số lượng Nhân viên
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
