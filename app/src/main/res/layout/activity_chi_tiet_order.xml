@@ -51,6 +51,7 @@
                     android:id="@+id/btnMinus"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#FA9C9C"
                     android:padding="0dp"
                     android:text="-" />
 
@@ -67,6 +68,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
+                    android:backgroundTint="#FA9C9C"
                     android:text="+" />
             </LinearLayout>
         </LinearLayout>
@@ -102,21 +104,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnOrder"
-            android:backgroundTint="#FFBFDB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="#EFA289"
+            android:drawableLeft="@drawable/ic_shopping"
             android:text="Order" />
+
         <Button
             android:id="@+id/btnHuy"
-            android:backgroundTint="#000000"
+            android:backgroundTint="#EFA289"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
+            android:drawableLeft="@drawable/baseline_exit_to_app_24"
             android:text="Hủy" />
     </LinearLayout>
     <LinearLayout
@@ -127,19 +133,21 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/btnCapNhat"
-            android:backgroundTint="#FFBFDB"
+            android:backgroundTint="#EFA289"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
+            android:drawableLeft="@drawable/ic_edit"
             android:text="Cập nhật" />
         <Button
             android:id="@+id/btnXoa"
-            android:backgroundTint="#000000"
+            android:backgroundTint="#EFA289"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
+            android:drawableLeft="@drawable/ic_delete"
             android:text="Xóa" />
     </LinearLayout>
 </LinearLayout>

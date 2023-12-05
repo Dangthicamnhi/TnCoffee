@@ -9,11 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderMon extends AppCompatActivity {
-    TextView tvTongTien;
+    static TextView tvTongTien;
     ListView lvDanhSachSP_Mua;
     Button btnThanhToan;
     static List<Order> data_Order = new ArrayList<>();
@@ -51,10 +47,25 @@ public class OrderMon extends AppCompatActivity {
     private void setEvents() {
         adapter_Order = new Adapter_Order(this,R.layout.item_order,data_Order);
         lvDanhSachSP_Mua.setAdapter(adapter_Order);
-        tvTongTien.setText(tinhTongTien() + " VNĐ");
+        tvTongTien.setText(tinhTongTien(OrderMon.data_Order) + " VNĐ");
+
+        btnThanhToan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(OrderMon.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(OrderMon.this,ChucNang.class);
+                intent.putExtra("isCreateNew" , true);
+                startActivity(intent);
+            }
+        });
     }
 
-    public int tinhTongTien(){
+    /**
+     * Nút thanh toán
+     * @param data_Order
+     * @return
+     */
+    public static int tinhTongTien(List<Order> data_Order){
         int tong = 0;
 
         for(Order item : data_Order){

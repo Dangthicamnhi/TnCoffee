@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -99,6 +100,29 @@ public class ChiTietOrder extends AppCompatActivity {
                     }
                 }
                 onBackPressed();
+            }
+        });
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChiTietOrder.this);
+                builder.setMessage("Bạn có muốn xóa sản phẩm " + sp.getTen() + " khỏi giỏ hàng ?");
+                builder.setPositiveButton("Có", (dialog, which) -> {
+                    for (Order item : OrderMon.data_Order) {
+                        if (item.getMaOrder().equals(order.getMaOrder())) {
+                            OrderMon.data_Order.remove(item);
+                            OrderMon.adapter_Order.notifyDataSetChanged();
+                            OrderMon.tvTongTien.setText(OrderMon.tinhTongTien(OrderMon.data_Order) + " VNĐ");
+                            onBackPressed();
+                            break;
+                        }
+                    }
+                });
+                builder.setNegativeButton("Không", (dialog, which) -> {
+                    // Nếu người dùng chọn không, đóng hộp thoại
+                    dialog.dismiss();
+                });
+                builder.create().show();
             }
         });
         btnHuy.setOnClickListener(new View.OnClickListener() {

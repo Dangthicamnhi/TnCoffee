@@ -67,7 +67,7 @@ public class ChucNang extends AppCompatActivity {
         btnHoaDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ChucNang.this, Payment.class);
+                Intent intent=new Intent(ChucNang.this, QLHoaDon.class);
                 startActivity(intent);
             }
         });
