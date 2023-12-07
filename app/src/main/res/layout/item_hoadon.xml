@@ -6,33 +6,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="324dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="273dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="66dp"
                 android:layout_marginVertical="5sp"
                 android:text="Mã hóa đơn: " />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="174dp"
                 android:layout_marginVertical="5sp"
                 android:text="Ngày xuất : " />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="243dp"
+            android:layout_height="281dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
@@ -40,25 +40,24 @@
             <TextView
                 android:id="@+id/tvMaHD"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:layout_marginVertical="5sp"
                 android:text="Mã hóa đơn" />
 
             <TextView
                 android:id="@+id/tvNgayXuat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="182dp"
                 android:layout_marginVertical="5sp"
-                android:text="Ngày xuất"/>
+                android:text="Ngày xuất" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvThanhTien"
-            android:gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5sp"
-            android:text="60000" />
+            android:gravity="center" />
     </LinearLayout>
 
 </LinearLayout>

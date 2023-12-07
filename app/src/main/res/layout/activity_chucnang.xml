@@ -117,19 +117,31 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/btnLogOut"
+                android:id="@+id/btnThongKe"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
                 android:backgroundTint="#FFFBC5B3"
-                android:drawableLeft="@drawable/ic_logout"
-                android:text="LogOut"
+                android:drawableLeft="@drawable/ic_feed"
+                android:text="Thong ke"
                 android:textColor="@color/black" />
+
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#FFFBC5B3"
+        android:drawableLeft="@drawable/ic_logout"
+        android:text="LogOut"
+        android:textColor="@color/black" />
 
 
 </LinearLayout>

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tncoffee.Adapter.Adapter_Order;
+import com.example.tncoffee.Database.DBHoaDon;
 import com.example.tncoffee.Model.HoaDon;
 import com.example.tncoffee.Model.Order;
 import com.example.tncoffee.Model.SanPham;
@@ -29,6 +32,7 @@ public class Payment extends AppCompatActivity {
     HoaDon hd;
     List<Order> data_Order = new ArrayList<>();//????????
     Adapter_Order adapter_Order;
+    DBHoaDon dbHoaDon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,37 @@ public class Payment extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     private void setEvent() {
-        btnHuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
+        dbHoaDon = new DBHoaDon(this);
+//        btnHuy.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Nếu có, hiển thị một hộp thoại xác nhận
+//                AlertDialog.Builder builder = new AlertDialog.Builder(Payment.this);
+//                builder.setMessage("Bạn có muốn xóa hóa đơn này ?");
+//                builder.setPositiveButton("Có", (dialog, which) -> {
+//                    dbHoaDon.XoaDL(edtMaHD.getText().toString());
+//                    dbHoaDon.Xoa_HoaDon(edtMaHD.getText().toString());
+//                    dbHoaDon.DocDL(2);
+//                    QLHoaDon.adapter_HoaDon.notifyDataSetChanged();
+//                    onBackPressed();
+//                });
+//                builder.setNegativeButton("Không", (dialog, which) -> {
+//                    // Nếu người dùng chọn không, đóng hộp thoại
+//                    dialog.dismiss();
+//                });
+//                builder.create().show();
+//            }
+//        });
+//
+//        btnExit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(Payment.this, QLHoaDon.class);
+//                startActivity(intent);
+//            }
+//        });
+
+
     }
 
     private void NhanGiaTri() {

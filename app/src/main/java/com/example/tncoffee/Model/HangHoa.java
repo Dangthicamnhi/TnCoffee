@@ -3,35 +3,65 @@ package com.example.tncoffee.Model;
 import java.io.Serializable;
 import java.util.List;
 
-public class HangHoa implements Serializable {
+public class HangHoa extends SanPham implements Serializable {
 
-    String MaHH, TenHH, Gia, SoLuong, Loai;
+    String SoLuong;//số lượng tồn kho
 
-    public HangHoa(String maHH, String tenHH, String gia, String soLuong, String loai) {
-        MaHH = maHH;
-        TenHH = tenHH;
-        Gia = gia;
-        SoLuong = soLuong;
-        Loai = loai;
+    public HangHoa() {
     }
 
-    public static String ThongKe(List<HangHoa> lhh) {
+    /**
+     * =>Sản phẩm đặt món
+     *
+     * @param ma
+     * @param ten
+     * @param gia
+     * @param loai
+     */
+    public HangHoa(String ma, String ten, String gia, String loai) {
+        super(ma, ten, gia, loai);
+    }
+
+    /**
+     * Sản phẩm nhập kho
+     *
+     * @param ma
+     * @param ten
+     * @param gia
+     * @param loai
+     * @param soLuong
+     */
+    public HangHoa(String ma, String ten, String gia, String loai, String soLuong) {
+        super(ma, ten, gia, loai);
+        SoLuong = soLuong;
+    }
+
+    /**
+     * Thống kê hàng hóa trong kho
+     *
+     * @param hangHoas
+     * @return
+     */
+
+    public static String ThongKeHH(List<HangHoa> hangHoas) {
 
         int cafe = 0, duong = 0, botmy = 0, tra = 0;
-        for (HangHoa sp : lhh) {
-            switch (sp.getLoai()) {
-                case "Cafe":
-                    cafe++;
-                    break;
-                case "Đường":
-                    duong++;
-                    break;
-                case "Bột My":
-                    botmy++;
-                    break;
-                case "Trà":
-                    tra++;
-                    break;
+        for (HangHoa sp : hangHoas) {
+            if (sp.getLoai() != null) {
+                switch (sp.getLoai()) {
+                    case "Cafe":
+                        cafe++;
+                        break;
+                    case "Đường":
+                        duong++;
+                        break;
+                    case "Bột Mỳ":
+                        botmy++;
+                        break;
+                    case "Trà":
+                        tra++;
+                        break;
+                }
             }
         }
         return "Cafe: " + cafe +
@@ -40,32 +70,6 @@ public class HangHoa implements Serializable {
                 "\nTrà: " + tra;
     }
 
-    public HangHoa() {
-    }
-
-    public String getMaHH() {
-        return MaHH;
-    }
-
-    public void setMaHH(String maHH) {
-        MaHH = maHH;
-    }
-
-    public String getTenHH() {
-        return TenHH;
-    }
-
-    public void setTenHH(String tenHH) {
-        TenHH = tenHH;
-    }
-
-    public String getGia() {
-        return Gia;
-    }
-
-    public void setGia(String gia) {
-        Gia = gia;
-    }
 
     public String getSoLuong() {
         return SoLuong;
@@ -75,11 +79,4 @@ public class HangHoa implements Serializable {
         SoLuong = soLuong;
     }
 
-    public String getLoai() {
-        return Loai;
-    }
-
-    public void setLoai(String loai) {
-        Loai = loai;
-    }
 }

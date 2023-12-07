@@ -1,9 +1,5 @@
 package com.example.tncoffee.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +14,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tncoffee.Database.DBHangHoa;
 import com.example.tncoffee.Model.HangHoa;
 import com.example.tncoffee.R;
 
@@ -36,6 +37,7 @@ public class ChiTietKho extends AppCompatActivity {
     ArrayAdapter adapter_LHH;
     int index = -1;
     int lengthListHH = 0;
+    DBHangHoa dbHangHoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,20 +101,22 @@ public class ChiTietKho extends AppCompatActivity {
         });
         spHangHoa.setAdapter(adapter_LHH);
         HangHoa hh = (HangHoa) getIntent().getSerializableExtra("item");
-        edtTenHH.setText(hh.getTenHH());
+        edtTenHH.setText(hh.getTen());
         edtSL.setText(hh.getSoLuong());
         edtGia.setText(hh.getGia());
-        if (hh.getLoai().equals("Cafe")) {
-            spHangHoa.setSelection(0);
-        }
-        if (hh.getLoai().equals("Đường")) {
-            spHangHoa.setSelection(1);
-        }
-        if (hh.getLoai().equals("Bột Mỳ")) {
-            spHangHoa.setSelection(2);
-        }
-        if (hh.getLoai().equals("Trà")) {
-            spHangHoa.setSelection(3);
+        if (hh.getLoai() != null) {
+            if (hh.getLoai().equals("Cafe")) {
+                spHangHoa.setSelection(0);
+            }
+            if (hh.getLoai().equals("Đường")) {
+                spHangHoa.setSelection(1);
+            }
+            if (hh.getLoai().equals("Bột Mỳ")) {
+                spHangHoa.setSelection(2);
+            }
+            if (hh.getLoai().equals("Trà")) {
+                spHangHoa.setSelection(3);
+            }
         }
         lengthListHH = (int) getIntent().getSerializableExtra("lengthListHangHoa");
         boolean isCreateNew = (boolean) getIntent().getSerializableExtra("isCreateNew");
@@ -121,16 +125,16 @@ public class ChiTietKho extends AppCompatActivity {
         if (isCreateNew) {
             btnXoa.setVisibility(View.INVISIBLE);
             btnSua.setVisibility(View.INVISIBLE);
-            String uniqueID = UUID.randomUUID().toString();
-            edtMaHH.setText("ID: " + uniqueID);
-            edtTenHH.setText(hh.getTenHH());
+//            String uniqueID = UUID.randomUUID().toString();
+//            edtMaHH.setText("ID: " + uniqueID);
+            edtTenHH.setText(hh.getTen());
             edtSL.setText(hh.getSoLuong());
             edtGia.setText(hh.getGia());
         } else {
             btnThem.setVisibility(View.INVISIBLE);
             btnLamMoi.setVisibility(View.INVISIBLE);
-            edtMaHH.setText(hh.getMaHH());
-            edtTenHH.setText(hh.getTenHH());
+            edtMaHH.setText(hh.getMa());
+            edtTenHH.setText(hh.getTen());
             edtSL.setText(hh.getSoLuong());
             edtGia.setText(hh.getGia());
         }
@@ -138,8 +142,8 @@ public class ChiTietKho extends AppCompatActivity {
         btnLamMoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uniqueID = UUID.randomUUID().toString();
-                edtMaHH.setText("ID: " + uniqueID);
+//                String uniqueID = UUID.randomUUID().toString();
+//                edtMaHH.setText("ID: " + uniqueID);
                 edtTenHH.setText("");
                 edtSL.setText("");
                 edtGia.setText("");
@@ -157,13 +161,16 @@ public class ChiTietKho extends AppCompatActivity {
                 String selectedItem = spHangHoa.getSelectedItem().toString();
 //                Toast.makeText(ChiTietNhanVien.this, selectedItem, Toast.LENGTH_LONG).show();
                 // Kiểm tra thông tin bắt buộc đã được nhập
-                if (ma.isEmpty() || ten.isEmpty() || sl.isEmpty() || gia.isEmpty()) {
+                if (ten.isEmpty() || sl.isEmpty() || gia.isEmpty()) {
                     Toast.makeText(ChiTietKho.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
                     return;
                 }
-                QLKho.danhSach.add(new HangHoa(ma, ten, sl, gia, selectedItem));
+                //==================================
+                // Thêm thông tin database
+                //==================================
+                dbHangHoa.ThemDLTrongKho(new HangHoa(ma, ten, gia, selectedItem, sl));
 
-                QLKho.adap.notifyDataSetChanged();
+                QLKho.customAdapterHangHoa.notifyDataSetChanged();
 
                 onBackPressed();
                 Toast.makeText(ChiTietKho.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -175,14 +182,18 @@ public class ChiTietKho extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (HangHoa item : QLKho.danhSach) {
-                    if (item.getMaHH().equals(edtMaHH.getText().toString())) {
+                for (HangHoa item : QLKho.hangHoas) {
+                    if (item.getMa().equals(edtMaHH.getText().toString())) {
 //                        HangHoa.GiamSoLuong(item.getLoai());
-                        QLKho.danhSach.remove(item);
+                        //==================================
+                        // Xóa thông tin database
+                        //==================================
+                        dbHangHoa.XoaDLTrongKho(item);
+                        QLKho.hangHoas.remove(item);
                         break;
                     }
                 }
-                QLKho.adap.notifyDataSetChanged();
+                QLKho.customAdapterHangHoa.notifyDataSetChanged();
                 onBackPressed();
                 Toast.makeText(ChiTietKho.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
             }
@@ -193,25 +204,25 @@ public class ChiTietKho extends AppCompatActivity {
             public void onClick(View view) {
                 boolean hasChanges = false;
 
-                for (HangHoa item : QLKho.danhSach) {
-                    if (item.getMaHH().equals(edtMaHH.getText().toString())) {
+                for (HangHoa item : QLKho.hangHoas) {
+                    if (item.getMa().equals(edtMaHH.getText().toString())) {
                         // Kiểm tra xem thông tin đã thay đổi hay chưa
-                        if (!item.getTenHH().equals(edtTenHH.getText().toString()) ||
-                                !item.getSoLuong().equals(edtSL.getText().toString()) ||
-                                !item.getGia().equals(edtGia.getText().toString()) ||
-                                !item.getLoai().equals(spHangHoa.getSelectedItem().toString())) {
-                            item.setTenHH(edtTenHH.getText().toString());
-                            item.setSoLuong(edtSL.getText().toString());
-                            item.setGia(edtGia.getText().toString());
-                            item.setLoai(spHangHoa.getSelectedItem().toString());
-                            hasChanges = true;
-                            break; // Dừng vòng lặp sau khi tìm thấy hàng hóa
-                        }
+                        item.setTen(edtTenHH.getText().toString());
+                        item.setSoLuong(edtSL.getText().toString());
+                        item.setGia(edtGia.getText().toString());
+                        item.setLoai(spHangHoa.getSelectedItem().toString());
+//                            item.setLoai(spHangHoa.getSelectedItem().toString());
+                        //==================================
+                        // Cập nhật thông tin database
+                        //==================================
+                        dbHangHoa.SuaDLTrongKho(item);
+                        hasChanges = true;
+                        break; // Dừng vòng lặp sau khi tìm thấy hàng hóa
                     }
                 }
 
                 if (hasChanges) {
-                    QLKho.adap.notifyDataSetChanged();
+                    QLKho.customAdapterHangHoa.notifyDataSetChanged();
                     Toast.makeText(ChiTietKho.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -221,7 +232,7 @@ public class ChiTietKho extends AppCompatActivity {
                 onBackPressed();
             }
         });
-}
+    }
 
 
     private void KhoiTao() {
@@ -229,6 +240,6 @@ public class ChiTietKho extends AppCompatActivity {
         danhsachHangHoa.add("Đường");
         danhsachHangHoa.add("Bột Mỳ");
         danhsachHangHoa.add("Trà");
-
+        dbHangHoa = new DBHangHoa(ChiTietKho.this);
     }
 }

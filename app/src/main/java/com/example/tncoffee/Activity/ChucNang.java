@@ -12,7 +12,7 @@ import com.example.tncoffee.R;
 
 public class ChucNang extends AppCompatActivity {
 
-    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon , btnLogOut, btnMenu;
+    Button bntQLNhanViien , btnQLMenu , btnQLKho , btnOrder,btnTTCuaHang , btnHoaDon , btnLogOut, btnMenu,btnThongke;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +79,14 @@ public class ChucNang extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        btnThongke.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(ChucNang.this, ThoongKeDoanhThu.class);
+//                startActivity(intent);
+//            }
+//        });
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override

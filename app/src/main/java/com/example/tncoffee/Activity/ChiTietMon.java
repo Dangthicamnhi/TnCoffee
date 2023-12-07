@@ -1,9 +1,6 @@
 package com.example.tncoffee.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,12 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tncoffee.Database.DBHangHoa;
 import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ChiTietMon extends AppCompatActivity {
     EditText edtMaMon, edtTenMon, edtGia;
@@ -33,13 +34,16 @@ public class ChiTietMon extends AppCompatActivity {
     Button btnThem, btnXoa, btnSua, btnLamMoi;
     ListView lvView;
     List<String> danhsachSP = new ArrayList<>();
-    ArrayAdapter adapter_LSP;
+    ArrayAdapter<String> adapter_LSP;
+
+    DBHangHoa dbHangHoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_mon);
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setTitle("Chi Tiết Món");
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -69,11 +73,12 @@ public class ChiTietMon extends AppCompatActivity {
         lvView = findViewById(R.id.lvDanhSachMon);
     }
 
+    @SuppressLint("SetTextI18n")
     private void setEvents() {
         KhoiTao();
 
         //Gán adapter vào spinner loại sản phẩm
-        adapter_LSP = new ArrayAdapter(this, android.R.layout.simple_list_item_1, danhsachSP);
+        adapter_LSP = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, danhsachSP);
         spMon.setAdapter(adapter_LSP);
 
         //Chọn item trên spinner
@@ -82,7 +87,7 @@ public class ChiTietMon extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (spMon.getSelectedItem().toString().equals("Đồ Ăn")) {
                     ivHinh.setImageResource(R.drawable.ic_doan);
-                }else if (spMon.getSelectedItem().toString().equals("Nước Uống")) {
+                } else if (spMon.getSelectedItem().toString().equals("Nước Uống")) {
                     ivHinh.setImageResource(R.drawable.ic_nuocuong);
                 }
             }
@@ -99,17 +104,24 @@ public class ChiTietMon extends AppCompatActivity {
         if (isCreateNew) {
             btnXoa.setVisibility(View.INVISIBLE);
             btnSua.setVisibility(View.INVISIBLE);
-            String uniqueID = UUID.randomUUID().toString();
-            edtMaMon.setText("ID: " + uniqueID);
+//            String uniqueID = UUID.randomUUID().toString();
+//            edtMaMon.setText("ID: " + uniqueID);
         } else {
             SanPham sp = (SanPham) getIntent().getSerializableExtra("item");
+            assert sp != null;
             edtTenMon.setText(sp.getTen());
             edtGia.setText(sp.getGia());
-            if (sp.getLoai().equals("Đồ Ăn")) {
-                spMon.setSelection(0);
-            }
-            if (sp.getLoai().equals("Nước Uống")) {
-                spMon.setSelection(1);
+            // Kiểm tra loại sản phẩm là khong null
+            if (sp.getLoai() != null) {
+                if (sp.getLoai().equals("Đồ Ăn")) {
+                    spMon.setSelection(0);
+                }
+                if (sp.getLoai().equals("Nước Uống")) {
+                    spMon.setSelection(1);
+                }
+            } else {
+                // null thì default value
+                spMon.setSelection(0);//default đồ ăn
             }
             btnThem.setVisibility(View.INVISIBLE);
             btnLamMoi.setVisibility(View.INVISIBLE);
@@ -119,82 +131,87 @@ public class ChiTietMon extends AppCompatActivity {
         }
 
         //Các nút của chức năng Thêm sản phẩm
-        btnLamMoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String uniqueID = UUID.randomUUID().toString();
-                edtMaMon.setText("ID: " + uniqueID);
-                edtTenMon.setText("");
-                edtGia.setText("");
-                spMon.setSelection(0);
+        btnLamMoi.setOnClickListener(view -> {
+//            String uniqueID = UUID.randomUUID().toString();
+//            edtMaMon.setText("ID: " + uniqueID);
 
-            }
+            edtTenMon.setText("");
+            edtGia.setText("");
+            spMon.setSelection(0);
+
         });
-        btnThem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String ma = edtMaMon.getText().toString();
-                String ten = edtTenMon.getText().toString();
-                String gia = edtGia.getText().toString();
-                String selectedItem = spMon.getSelectedItem().toString();
-                // Kiểm tra thông tin bắt buộc đã được nhập
-                if (ma.isEmpty() || ten.isEmpty() || gia.isEmpty() || selectedItem.isEmpty()) {
-                    Toast.makeText(ChiTietMon.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                QLMon.danhSach.add(new SanPham(ma, ten, gia, selectedItem));
-
-                QLMon.adap.notifyDataSetChanged();
-
-                Toast.makeText(ChiTietMon.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                onBackPressed();
+        btnThem.setOnClickListener(view -> {
+            String ma = edtMaMon.getText().toString();
+            String ten = edtTenMon.getText().toString();
+            String gia = edtGia.getText().toString();
+            String selectedItem = spMon.getSelectedItem().toString();
+            // Kiểm tra thông tin bắt buộc đã được nhập
+            if (ten.isEmpty() || gia.isEmpty() || selectedItem.isEmpty()) {
+                Toast.makeText(ChiTietMon.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
+                return;
             }
+
+            //==================================
+            // Thêm thông tin database
+            //==================================
+            dbHangHoa.ThemDLTrenMenu(new SanPham(ma, ten, gia, selectedItem));
+            // cập nhật thông tin danh sách món ăn
+            QLMon.customAdapterSanPham.notifyDataSetChanged();
+
+            Toast.makeText(ChiTietMon.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+            onBackPressed();
+            Intent intent = new Intent(ChiTietMon.this, QLMon.class);
+            startActivity(intent);
         });
 
         //Các nút của chức năng Chi tiết sản phẩm
-        btnXoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for (SanPham item : QLMon.danhSach) {
-                    if (item.getMa().equals(edtMaMon.getText().toString())) {
-                        QLMon.danhSach.remove(item);
-                        break;
-                    }
+        btnXoa.setOnClickListener(view -> {
+            for (SanPham item : QLMon.danhSachSanPhamTrenMenu) {
+                if (item.getMa().equals(edtMaMon.getText().toString())) {
+                    QLMon.danhSachSanPhamTrenMenu.remove(item);
+                    //==================================
+                    // Xóa thông tin database
+                    //==================================
+                    dbHangHoa.XoaDLTrenMenu(item);
+                    break;
                 }
-                QLMon.adap.notifyDataSetChanged();
-                Toast.makeText(ChiTietMon.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                onBackPressed();
             }
+            QLMon.customAdapterSanPham.notifyDataSetChanged();
+
+            Toast.makeText(ChiTietMon.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+            onBackPressed();
         });
-        btnSua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean hasChanges = false;
+        btnSua.setOnClickListener(view -> {
+            boolean hasChanges = false;
 
-                for (SanPham item : QLMon.danhSach) {
-                    if (item.getMa().equals(edtMaMon.getText().toString())) {
-                        // Kiểm tra xem thông tin đã thay đổi hay chưa
-                        if (!item.getTen().equals(edtTenMon.getText().toString()) ||
-                                !item.getGia().equals(edtGia.getText().toString()) ||
-                                !item.getLoai().equals(spMon.getSelectedItem().toString())) {
-                            item.setTen(edtTenMon.getText().toString());
-                            item.setGia(edtGia.getText().toString());
-                            item.setLoai(spMon.getSelectedItem().toString());
-                            hasChanges = true;
-                            break; // Dừng vòng lặp sau khi tìm thấy
-                        }
+            for (SanPham item : QLMon.danhSachSanPhamTrenMenu) {
+                if (item.getMa().equals(edtMaMon.getText().toString())) {
+                    if (!item.getTen().equals(edtTenMon.getText().toString()) ||
+                            !item.getGia().equals(edtGia.getText().toString()) ||
+                            !item.getLoai().equals(spMon.getSelectedItem().toString())) {
+
+                        item.setTen(edtTenMon.getText().toString());
+                        item.setGia(edtGia.getText().toString());
+                        item.setLoai(spMon.getSelectedItem().toString());
+
+                        //==================================
+                        // Cập nhật thông tin database
+                        //==================================
+                        dbHangHoa.SuaDLTrenMenu(item);
+                        hasChanges = true;
+                        break; // Dừng vòng lặp sau khi tìm thấy
                     }
                 }
-
-                if (hasChanges) {
-                    QLMon.adap.notifyDataSetChanged();
-                    Toast.makeText(ChiTietMon.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ChiTietMon.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();
-                }
-
-                onBackPressed();
             }
+
+            if (hasChanges) {
+                QLMon.customAdapterSanPham.notifyDataSetChanged();
+                Toast.makeText(ChiTietMon.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ChiTietMon.this, "Không có sự thay đổi thông tin", Toast.LENGTH_SHORT).show();
+            }
+
+            onBackPressed();
         });
 
     }
@@ -203,6 +220,6 @@ public class ChiTietMon extends AppCompatActivity {
     private void KhoiTao() {
         danhsachSP.add("Đồ Ăn");
         danhsachSP.add("Nước Uống");
-
+        dbHangHoa = new DBHangHoa(ChiTietMon.this);
     }
 }

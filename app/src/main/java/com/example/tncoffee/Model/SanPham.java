@@ -5,28 +5,38 @@ import java.util.List;
 
 public class SanPham implements Serializable {
     private String ma, ten, gia, Loai;
+
+    public SanPham(){}
     public SanPham(String ma, String ten, String gia, String loai) {
         this.ma = ma;
         this.ten = ten;
         this.gia = gia;
-       Loai = loai;
+        Loai = loai;
     }
 
-    public static String ThongKe(List<SanPham> lsp){
+    /**
+     * Thống kê theo sản phẩm bán được
+     *
+     * @param lsp
+     * @return
+     */
+    public static String ThongKeSP(List<SanPham> lsp) {
         int DoAn = 0, NuocUong = 0;
         for (SanPham sp : lsp) {
-            switch (sp.getLoai()) {
-                case "Đồ Ăn":
-                    DoAn++;
-                    break;
-                case "Nước Uống":
-                    NuocUong++;
-                    break;
+            if(sp.getLoai() != null){
+                switch (sp.getLoai()) {
+                    case "Đồ Ăn":
+                        DoAn++;
+                        break;
+                    case "Nước Uống":
+                        NuocUong++;
+                        break;
+                }
             }
         }
 
         return "Số lượng đồ ăn: " + DoAn +
-                "\nSố lượng nước uống: " + NuocUong ;
+                "\nSố lượng nước uống: " + NuocUong;
     }
 
 

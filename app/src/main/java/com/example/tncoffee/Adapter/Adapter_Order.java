@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.tncoffee.Activity.MainActivity;
 import com.example.tncoffee.Activity.QLMon;
+import com.example.tncoffee.Database.OnDeleteFromCartClickListener;
 import com.example.tncoffee.Model.Order;
 import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
@@ -20,11 +20,12 @@ import com.example.tncoffee.R;
 import java.util.List;
 
 public class Adapter_Order extends ArrayAdapter {
+    private OnDeleteFromCartClickListener listener;//Triển khai interface để bắt sự kiện của adapter con từ lớp cha
 
     Context context;
     int resource;
     List<Order> danhSach;
-//    int[] hinh = {R.drawable.ic_bxiu, R.drawable.ic_cfden, R.drawable.ic_cfsua, R.drawable.ic_tchanh, R.drawable.ic_tdao, R.drawable.ic_tsua, R.drawable.ic_banhngot, R.drawable.banhdau , R.drawable.banhran};
+    //    int[] hinh = {R.drawable.ic_bxiu, R.drawable.ic_cfden, R.drawable.ic_cfsua, R.drawable.ic_tchanh, R.drawable.ic_tdao, R.drawable.ic_tsua, R.drawable.ic_banhngot, R.drawable.banhdau , R.drawable.banhran};
     public Adapter_Order(Context context, int resource, List<Order> danhSach) {
         super(context , resource , danhSach );
         this.context = context;
@@ -46,7 +47,7 @@ public class Adapter_Order extends ArrayAdapter {
         tvSoLuong.setText("x"+danhSach.get(position).getSoLuong());
         tvThanhTien.setText(danhSach.get(position).getThanhTien() + "VNĐ");
         String loai = "";
-        for(SanPham item : QLMon.danhSach){
+        for(SanPham item : QLMon.danhSachSanPhamTrenMenu){
             if(item.getMa().equals(order.getMaOrder())){
                 loai = item.getLoai();
             }

@@ -1,9 +1,5 @@
 package com.example.tncoffee.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,6 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tncoffee.Model.HangHoa;
 import com.example.tncoffee.Model.Order;
 import com.example.tncoffee.Model.SanPham;
 import com.example.tncoffee.R;
@@ -22,7 +23,7 @@ import com.example.tncoffee.R;
 public class ChiTietOrder extends AppCompatActivity {
     boolean isAdded;
     Order order;
-    SanPham sp;
+    SanPham sanPham;
     TextView tvTenSP, tvDonGia, tvThanhTien;
     EditText edtSoLuong;
     Button btnPlus, btnMinus, btnCapNhat, btnXoa, btnOrder, btnHuy;
@@ -66,6 +67,7 @@ public class ChiTietOrder extends AppCompatActivity {
                 int sl = Integer.parseInt(edtSoLuong.getText().toString()) + 1;
                 edtSoLuong.setText(sl + "");
                 tvThanhTien.setText(tinhThanhTien() + " VNĐ");
+                OrderMon.giohang.increaseQuantity(sanPham,sl);
             }
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +79,7 @@ public class ChiTietOrder extends AppCompatActivity {
                 }
                 edtSoLuong.setText(sl + "");
                 tvThanhTien.setText(tinhThanhTien() + " VNĐ");
+                OrderMon.giohang.decreaseQuantity(sanPham);
             }
         });
 
@@ -85,7 +88,7 @@ public class ChiTietOrder extends AppCompatActivity {
             public void onClick(View v) {
                 int soLuong = Integer.parseInt(edtSoLuong.getText().toString());
                 if (soLuong > 0) {
-                    Order or = new Order(sp.getMa(), soLuong, tinhThanhTien());
+                    Order or = new Order(sanPham.getMa(), soLuong, tinhThanhTien());
                     boolean isExist = false;
                     for (Order item : OrderMon.data_Order) {
                         if (item.getMaOrder().equals(or.getMaOrder())) {
@@ -98,6 +101,8 @@ public class ChiTietOrder extends AppCompatActivity {
                     if (!isExist) {
                         OrderMon.data_Order.add(or);
                     }
+                    OrderMon.giohang.add(new HangHoa(sanPham.getMa(), sanPham.getTen(), sanPham.getGia(), sanPham.getLoai(), soLuong + ""));
+
                 }
                 onBackPressed();
             }
@@ -106,7 +111,7 @@ public class ChiTietOrder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ChiTietOrder.this);
-                builder.setMessage("Bạn có muốn xóa sản phẩm " + sp.getTen() + " khỏi giỏ hàng ?");
+                builder.setMessage("Bạn có muốn xóa sản phẩm " + sanPham.getTen() + " khỏi giỏ hàng ?");
                 builder.setPositiveButton("Có", (dialog, which) -> {
                     for (Order item : OrderMon.data_Order) {
                         if (item.getMaOrder().equals(order.getMaOrder())) {
@@ -151,20 +156,23 @@ public class ChiTietOrder extends AppCompatActivity {
 
     private void NhanGiaTri() {
         isAdded = (boolean) getIntent().getSerializableExtra("isAdded");
-        sp = (SanPham) getIntent().getSerializableExtra("item");
+        sanPham = (SanPham) getIntent().getSerializableExtra("item");
 
-        if (sp.getLoai().equals("Đồ Ăn")) {
+        if (sanPham.getLoai().equals("Đồ Ăn")) {
             ivHinh.setImageResource(R.drawable.ic_doan);
         }
-        if (sp.getLoai().equals("Nước Uống")) {
+        if (sanPham.getLoai().equals("Nước Uống")) {
             ivHinh.setImageResource(R.drawable.ic_nuocuong);
         }
 
-        tvTenSP.setText(sp.getTen());
-        tvDonGia.setText(sp.getGia());
+        tvTenSP.setText(sanPham.getTen());
+        tvDonGia.setText(sanPham.getGia());
 
         edtSoLuong.setText("0");
         tvThanhTien.setText("0 VNĐ");
+
+        // add vao gio hang
+
 
         if (!isAdded) {
             order = (Order) getIntent().getSerializableExtra("order");

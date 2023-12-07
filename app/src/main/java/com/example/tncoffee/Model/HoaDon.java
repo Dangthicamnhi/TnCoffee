@@ -7,7 +7,7 @@ public class HoaDon  implements Serializable {
     String maHD , ngayXuat ;
     int thanhTien;
 
-    public HoaDon(String maHD, String ngayXuat, int thanhTien) {
+    public HoaDon() {
         this.maHD = maHD;
         this.ngayXuat = ngayXuat;
         this.thanhTien = thanhTien;
